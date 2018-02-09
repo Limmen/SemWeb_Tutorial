@@ -1,7 +1,7 @@
 # ID2208 Programming The Semantic Web Tutorial for Project VT18
 
 Java implementation of a semantic web service using the whole stack of OWL, RDF, SPARQL processing.
-See associated PDF tutorial description in `/paper/`
+See associated PDF tutorial description in `/doc/`
 
 ## Installation
 
@@ -63,7 +63,7 @@ wget --header "Accept: application/rdf+xml" http://localhost:8080/id2208/tutoria
 > **After** you have started the services on localhost:8080 you can run the client from inside the IDE or with the following command:
 
 ```sh
-mvn exec:java -Dexec.mainClass="kth.se.id2208.vt18.project.tutorial.client.Agent" 
+mvn exec:java -Dexec.mainClass="kth.se.id2208.vt18.project.tutorial.client.Agent"
 ```
 
 ## Inspect the RDF/OWL
