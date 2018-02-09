@@ -1,0 +1,65 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:smp="http://localhost:8080/id2208/tutorial/ontologies/semwebprogram#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:j.0="http://xmlns.com/foaf/0.1/">
+  <smp:Course rdf:about="http://localhost:8080/id2208/tutorial/institutes/chalmers#ID2288">
+    <rdfs:comment>University Course</rdfs:comment>
+    <smp:isWorthCredits>7.5</smp:isWorthCredits>
+    <smp:hasCourseName>ID2288 - Logic Programming for the Semantic Web</smp:hasCourseName>
+    <smp:hasCourseWork>
+      <smp:CourseWork rdf:about="http://localhost:8080/id2208/tutorial/institutes/chalmers#ID2288Exam">
+        <rdfs:comment>CourseWork part of some university course</rdfs:comment>
+        <smp:hasExaminationPolicy>
+          <smp:AtoF rdf:about="http://localhost:8080/id2208/tutorial/institutes/chalmers#ID2288AtoF">
+            <rdfs:comment>A-to-F grading of coursework</rdfs:comment>
+          </smp:AtoF>
+        </smp:hasExaminationPolicy>
+        <smp:isWorthCredits>4.0</smp:isWorthCredits>
+        <smp:isRelatedTo>
+          <smp:Paper rdf:about="http://localhost:8080/id2208/tutorial/institutes/chalmers#SemWebLogicProgramming">
+            <rdfs:comment>Paper</rdfs:comment>
+            <smp:hasAuthor>
+              <j.0:Person rdf:about="http://localhost:8080/id2208/tutorial/institutes/chalmers#JoseJulioAlferes">
+                <rdfs:comment>Person</rdfs:comment>
+                <j.0:name>José Júlio Alferes</j.0:name>
+                <j.0:homepage>http://dblp.org/pers/hd/a/Alferes:Jos=eacute=_J=uacute=lio</j.0:homepage>
+              </j.0:Person>
+            </smp:hasAuthor>
+            <smp:hasAuthor>
+              <j.0:Person rdf:about="http://localhost:8080/id2208/tutorial/institutes/chalmers#CarlosViegasDamasio">
+                <rdfs:comment>Person</rdfs:comment>
+                <j.0:name>Carlos Viegas Damásio</j.0:name>
+                <j.0:homepage>http://dblp.org/pers/hd/d/Dam=aacute=sio:Carlos_Viegas</j.0:homepage>
+              </j.0:Person>
+            </smp:hasAuthor>
+            <smp:hasAuthor>
+              <j.0:Person rdf:about="http://localhost:8080/id2208/tutorial/institutes/chalmers#LuizMonizPereira">
+                <rdfs:comment>Person</rdfs:comment>
+                <j.0:name>Luís Moniz Pereira</j.0:name>
+                <j.0:homepage>http://dblp.org/pers/hd/p/Pereira:Lu=iacute=s_Moniz</j.0:homepage>
+              </j.0:Person>
+            </smp:hasAuthor>
+            <smp:hasLiteratureTitle>Semantic Web Logic Programming Tools</smp:hasLiteratureTitle>
+          </smp:Paper>
+        </smp:isRelatedTo>
+        <smp:hasCourseWorkDescription>Final Exam of Course, covers all topics and chapters from course literature</smp:hasCourseWorkDescription>
+      </smp:CourseWork>
+    </smp:hasCourseWork>
+    <smp:hasCourseWork>
+      <smp:CourseWork rdf:about="http://localhost:8080/id2208/tutorial/institutes/chalmers#ID2288Homework">
+        <rdfs:comment>CourseWork part of some university course</rdfs:comment>
+        <smp:hasExaminationPolicy>
+          <smp:PassFail rdf:about="http://localhost:8080/id2208/tutorial/institutes/chalmers#ID2288PassFail">
+            <rdfs:comment>Pass-Fail grading of coursework</rdfs:comment>
+          </smp:PassFail>
+        </smp:hasExaminationPolicy>
+        <smp:isWorthCredits>3.5</smp:isWorthCredits>
+        <smp:isRelatedTo rdf:resource="http://localhost:8080/id2208/tutorial/institutes/chalmers#SemWebLogicProgramming"/>
+        <smp:hasCourseWorkDescription>Homework to create a semantic web reasoner using predicate logic on top of OWL</smp:hasCourseWorkDescription>
+      </smp:CourseWork>
+    </smp:hasCourseWork>
+    <smp:isPartOfProgram>http://localhost:8080/id2208/tutorial/programs/semwebprogram#semwebprogram</smp:isPartOfProgram>
+    <smp:isTaughtAt>http://dbpedia.org/resource/Chalmers_University_of_Technology</smp:isTaughtAt>
+  </smp:Course>
+</rdf:RDF>

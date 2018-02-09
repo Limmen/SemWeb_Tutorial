@@ -1,0 +1,46 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:smp="http://localhost:8080/id2208/tutorial/ontologies/semwebprogram#"
+    xmlns:j.0="http://dbpedia.org/ontology/"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:j.1="http://xmlns.com/foaf/0.1/">
+  <smp:Course rdf:about="http://localhost:8080/id2208/tutorial/institutes/kth#ID2208">
+    <rdfs:comment>University Course</rdfs:comment>
+    <smp:isWorthCredits>7.5</smp:isWorthCredits>
+    <smp:hasCourseName>ID2208 - Programming Web Services</smp:hasCourseName>
+    <smp:hasCourseWork>
+      <smp:CourseWork rdf:about="http://localhost:8080/id2208/tutorial/institutes/kth#ID2208Project">
+        <rdfs:comment>CourseWork part of some university course</rdfs:comment>
+        <smp:hasExaminationPolicy>
+          <smp:PassFail rdf:about="http://localhost:8080/id2208/tutorial/institutes/kth#ID2208PassFail">
+            <rdfs:comment>Pass-Fail grading of coursework</rdfs:comment>
+          </smp:PassFail>
+        </smp:hasExaminationPolicy>
+        <smp:isWorthCredits>7.5</smp:isWorthCredits>
+        <smp:isRelatedTo>
+          <smp:Book rdf:about="http://localhost:8080/id2208/tutorial/institutes/kth#semwebWorkingOntologist">
+            <rdfs:comment>Book</rdfs:comment>
+            <smp:hasAuthor>
+              <j.1:Person rdf:about="http://localhost:8080/id2208/tutorial/institutes/kth#JimHendler">
+                <rdfs:comment>Person</rdfs:comment>
+                <j.1:name>Jim Hendler</j.1:name>
+                <j.1:homepage>http://dblp.uni-trier.de/pers/h/Hendler:James_A=</j.1:homepage>
+              </j.1:Person>
+            </smp:hasAuthor>
+            <smp:hasAuthor>
+              <j.1:Person rdf:about="http://localhost:8080/id2208/tutorial/institutes/kth#DeanAllemang">
+                <rdfs:comment>Person</rdfs:comment>
+                <j.1:name>Dean Allemang</j.1:name>
+                <j.1:homepage>http://dblp.uni-trier.de/pers/a/Allemang:Dean</j.1:homepage>
+              </j.1:Person>
+            </smp:hasAuthor>
+            <smp:hasLiteratureTitle>Semantic Web for the Working Ontologist: Effective Modeling in RDFS and OWL</smp:hasLiteratureTitle>
+          </smp:Book>
+        </smp:isRelatedTo>
+        <smp:hasCourseWorkDescription>Course Project: Implement a Semantic Web Service using the full stack of OWL,RDF,SPARQL,WebService. Deliverables: Code, Presentation, Report</smp:hasCourseWorkDescription>
+      </smp:CourseWork>
+    </smp:hasCourseWork>
+    <smp:isPartOfProgram>http://localhost:8080/id2208/tutorial/programs/semwebprogram</smp:isPartOfProgram>
+    <j.0:University>http://dbpedia.org/resource/Royal_Institute_of_Technology</j.0:University>
+  </smp:Course>
+</rdf:RDF>

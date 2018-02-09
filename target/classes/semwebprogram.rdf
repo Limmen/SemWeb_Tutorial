@@ -1,0 +1,14 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:smp="http://localhost:8080/id2208/tutorial/ontologies/semwebprogram#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+  <smp:Program rdf:about="http://localhost:8080/id2208/tutorial/programs/semwebprogram#semwebprogram">
+    <rdfs:comment>University Program</rdfs:comment>
+    <smp:isWorthCredits>15.0</smp:isWorthCredits>
+    <smp:hasCourse>http://localhost:8080/id2208/tutorial/institutes/kth#ID2208</smp:hasCourse>
+    <smp:hasCourse>http://localhost:8080/id2208/tutorial/institutes/chalmers#ID2288</smp:hasCourse>
+    <smp:isTaughtAt>http://dbpedia.org/resource/Royal_Institute_of_Technology</smp:isTaughtAt>
+    <smp:isTaughtAt>http://dbpedia.org/resource/Chalmers_University_of_Technology</smp:isTaughtAt>
+    <smp:hasProgramName>International Cross University Semantic Web Master Program</smp:hasProgramName>
+  </smp:Program>
+</rdf:RDF>
