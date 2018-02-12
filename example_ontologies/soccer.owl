@@ -1,0 +1,1163 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY time-entry "http://www.isi.edu/~pan/damltime/time-entry.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://ontosem.net/ontology/soccer.owl#"
+     xml:base="http://ontosem.net/ontology/soccer.owl"
+     xmlns:time-entry="http://www.isi.edu/~pan/damltime/time-entry.owl#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://ontosem.net/ontology/soccer.owl">
+        <owl:imports rdf:resource="http://www.isi.edu/~pan/damltime/time-entry.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#agent -->
+
+    <owl:ObjectProperty rdf:about="http://ontosem.net/ontology/soccer.owl#agent">
+        <rdfs:domain rdf:resource="http://ontosem.net/ontology/soccer.owl#Action"/>
+        <rdfs:range rdf:resource="http://ontosem.net/ontology/soccer.owl#Person"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#hasRole -->
+
+    <owl:ObjectProperty rdf:about="http://ontosem.net/ontology/soccer.owl#hasRole">
+        <rdfs:domain rdf:resource="http://ontosem.net/ontology/soccer.owl#Person"/>
+        <rdfs:range rdf:resource="http://ontosem.net/ontology/soccer.owl#Role"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#role"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#withRole"/>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#hasTeam -->
+
+    <owl:ObjectProperty rdf:about="http://ontosem.net/ontology/soccer.owl#hasTeam">
+        <rdfs:domain rdf:resource="http://ontosem.net/ontology/soccer.owl#Person"/>
+        <rdfs:range rdf:resource="http://ontosem.net/ontology/soccer.owl#Team"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#role"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#withTeam"/>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#homeArena -->
+
+    <owl:ObjectProperty rdf:about="http://ontosem.net/ontology/soccer.owl#homeArena">
+        <rdfs:range rdf:resource="http://ontosem.net/ontology/soccer.owl#Stadium"/>
+        <rdfs:domain rdf:resource="http://ontosem.net/ontology/soccer.owl#Team"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#in -->
+
+    <owl:ObjectProperty rdf:about="http://ontosem.net/ontology/soccer.owl#in">
+        <rdfs:range rdf:resource="http://ontosem.net/ontology/soccer.owl#Person"/>
+        <rdfs:domain rdf:resource="http://ontosem.net/ontology/soccer.owl#Substitution"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#inMatch -->
+
+    <owl:ObjectProperty rdf:about="http://ontosem.net/ontology/soccer.owl#inMatch">
+        <rdfs:range rdf:resource="http://ontosem.net/ontology/soccer.owl#Match"/>
+        <rdfs:domain rdf:resource="http://ontosem.net/ontology/soccer.owl#MatchEvent"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#leadsTo -->
+
+    <owl:ObjectProperty rdf:about="http://ontosem.net/ontology/soccer.owl#leadsTo">
+        <rdfs:domain rdf:resource="http://ontosem.net/ontology/soccer.owl#Action"/>
+        <rdfs:range rdf:resource="http://ontosem.net/ontology/soccer.owl#MatchEvent"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#loser -->
+
+    <owl:ObjectProperty rdf:about="http://ontosem.net/ontology/soccer.owl#loser">
+        <rdfs:domain rdf:resource="http://ontosem.net/ontology/soccer.owl#Match"/>
+        <rdfs:range rdf:resource="http://ontosem.net/ontology/soccer.owl#Team"/>
+        <rdfs:subPropertyOf rdf:resource="http://ontosem.net/ontology/soccer.owl#team"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#out -->
+
+    <owl:ObjectProperty rdf:about="http://ontosem.net/ontology/soccer.owl#out">
+        <rdfs:range rdf:resource="http://ontosem.net/ontology/soccer.owl#Person"/>
+        <rdfs:domain rdf:resource="http://ontosem.net/ontology/soccer.owl#Substitution"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#patient -->
+
+    <owl:ObjectProperty rdf:about="http://ontosem.net/ontology/soccer.owl#patient">
+        <rdfs:range rdf:resource="http://ontosem.net/ontology/soccer.owl#Person"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#Foul"/>
+                    <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#Pass"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#referee -->
+
+    <owl:ObjectProperty rdf:about="http://ontosem.net/ontology/soccer.owl#referee">
+        <rdfs:domain rdf:resource="http://ontosem.net/ontology/soccer.owl#Match"/>
+        <rdfs:range rdf:resource="http://ontosem.net/ontology/soccer.owl#Person"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#role -->
+
+    <owl:ObjectProperty rdf:about="http://ontosem.net/ontology/soccer.owl#role">
+        <rdfs:domain rdf:resource="http://ontosem.net/ontology/soccer.owl#Person"/>
+        <rdfs:range rdf:resource="http://ontosem.net/ontology/soccer.owl#PersonRole"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#stadium -->
+
+    <owl:ObjectProperty rdf:about="http://ontosem.net/ontology/soccer.owl#stadium">
+        <rdfs:domain rdf:resource="http://ontosem.net/ontology/soccer.owl#Match"/>
+        <rdfs:range rdf:resource="http://ontosem.net/ontology/soccer.owl#Stadium"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#supports -->
+
+    <owl:ObjectProperty rdf:about="http://ontosem.net/ontology/soccer.owl#supports">
+        <rdfs:domain rdf:resource="http://ontosem.net/ontology/soccer.owl#Person"/>
+        <rdfs:range rdf:resource="http://ontosem.net/ontology/soccer.owl#Team"/>
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://ontosem.net/ontology/soccer.owl#hasRole"/>
+                <owl:hasValue rdf:resource="http://ontosem.net/ontology/soccer.owl#Supporter"/>
+            </owl:Restriction>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#team -->
+
+    <owl:ObjectProperty rdf:about="http://ontosem.net/ontology/soccer.owl#team">
+        <rdfs:domain rdf:resource="http://ontosem.net/ontology/soccer.owl#Match"/>
+        <rdfs:range rdf:resource="http://ontosem.net/ontology/soccer.owl#Team"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#winner -->
+
+    <owl:ObjectProperty rdf:about="http://ontosem.net/ontology/soccer.owl#winner">
+        <rdfs:domain rdf:resource="http://ontosem.net/ontology/soccer.owl#Match"/>
+        <rdfs:range rdf:resource="http://ontosem.net/ontology/soccer.owl#Team"/>
+        <rdfs:subPropertyOf rdf:resource="http://ontosem.net/ontology/soccer.owl#team"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#withRole -->
+
+    <owl:ObjectProperty rdf:about="http://ontosem.net/ontology/soccer.owl#withRole">
+        <rdfs:domain rdf:resource="http://ontosem.net/ontology/soccer.owl#PersonRole"/>
+        <rdfs:range rdf:resource="http://ontosem.net/ontology/soccer.owl#Role"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#withTeam -->
+
+    <owl:ObjectProperty rdf:about="http://ontosem.net/ontology/soccer.owl#withTeam">
+        <rdfs:domain rdf:resource="http://ontosem.net/ontology/soccer.owl#PersonRole"/>
+        <rdfs:range rdf:resource="http://ontosem.net/ontology/soccer.owl#Team"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#withTimeInterval -->
+
+    <owl:ObjectProperty rdf:about="http://ontosem.net/ontology/soccer.owl#withTimeInterval">
+        <rdfs:domain rdf:resource="http://ontosem.net/ontology/soccer.owl#PersonRole"/>
+        <rdfs:range rdf:resource="&time-entry;Interval"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#atMinute -->
+
+    <owl:DatatypeProperty rdf:about="http://ontosem.net/ontology/soccer.owl#atMinute">
+        <rdfs:range rdf:resource="&xsd;integer"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#Action"/>
+                    <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#MatchEvent"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#firstName -->
+
+    <owl:DatatypeProperty rdf:about="http://ontosem.net/ontology/soccer.owl#firstName">
+        <rdfs:domain rdf:resource="http://ontosem.net/ontology/soccer.owl#Person"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#height -->
+
+    <owl:DatatypeProperty rdf:about="http://ontosem.net/ontology/soccer.owl#height">
+        <rdfs:domain rdf:resource="http://ontosem.net/ontology/soccer.owl#Person"/>
+        <rdfs:range rdf:resource="&xsd;integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#lastName -->
+
+    <owl:DatatypeProperty rdf:about="http://ontosem.net/ontology/soccer.owl#lastName">
+        <rdfs:domain rdf:resource="http://ontosem.net/ontology/soccer.owl#Person"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#Action -->
+
+    <owl:Class rdf:about="http://ontosem.net/ontology/soccer.owl#Action">
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#Match"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#MatchEvent"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#Person"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#PersonRole"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#Role"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#Stadium"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#Team"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#Card -->
+
+    <owl:Class rdf:about="http://ontosem.net/ontology/soccer.owl#Card">
+        <rdfs:subClassOf rdf:resource="http://ontosem.net/ontology/soccer.owl#MatchEvent"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#FreeKick"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#Goal"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#GoalKick"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#KickOff"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#PenaltyKick"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#Substitution"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#ThrowIn"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#Club -->
+
+    <owl:Class rdf:about="http://ontosem.net/ontology/soccer.owl#Club">
+        <rdfs:subClassOf rdf:resource="http://ontosem.net/ontology/soccer.owl#Team"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#NationalTeam"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#Foul -->
+
+    <owl:Class rdf:about="http://ontosem.net/ontology/soccer.owl#Foul">
+        <rdfs:subClassOf rdf:resource="http://ontosem.net/ontology/soccer.owl#Action"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#Pass"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#ShotAtGoal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#FreeKick -->
+
+    <owl:Class rdf:about="http://ontosem.net/ontology/soccer.owl#FreeKick">
+        <rdfs:subClassOf rdf:resource="http://ontosem.net/ontology/soccer.owl#MatchEvent"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#Goal"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#GoalKick"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#KickOff"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#PenaltyKick"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#Substitution"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#ThrowIn"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#Goal -->
+
+    <owl:Class rdf:about="http://ontosem.net/ontology/soccer.owl#Goal">
+        <rdfs:subClassOf rdf:resource="http://ontosem.net/ontology/soccer.owl#MatchEvent"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#GoalKick"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#KickOff"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#PenaltyKick"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#Substitution"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#ThrowIn"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#GoalKick -->
+
+    <owl:Class rdf:about="http://ontosem.net/ontology/soccer.owl#GoalKick">
+        <rdfs:subClassOf rdf:resource="http://ontosem.net/ontology/soccer.owl#MatchEvent"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#KickOff"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#PenaltyKick"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#Substitution"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#ThrowIn"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#KickOff -->
+
+    <owl:Class rdf:about="http://ontosem.net/ontology/soccer.owl#KickOff">
+        <rdfs:subClassOf rdf:resource="http://ontosem.net/ontology/soccer.owl#MatchEvent"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#PenaltyKick"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#Substitution"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#ThrowIn"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#Match -->
+
+    <owl:Class rdf:about="http://ontosem.net/ontology/soccer.owl#Match">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://ontosem.net/ontology/soccer.owl#winner"/>
+                <owl:onClass rdf:resource="http://ontosem.net/ontology/soccer.owl#Team"/>
+                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://ontosem.net/ontology/soccer.owl#loser"/>
+                <owl:onClass rdf:resource="http://ontosem.net/ontology/soccer.owl#Team"/>
+                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#MatchEvent"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#Person"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#PersonRole"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#Role"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#Stadium"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#Team"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#MatchEvent -->
+
+    <owl:Class rdf:about="http://ontosem.net/ontology/soccer.owl#MatchEvent">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#Person"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#PersonRole"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#Role"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#Stadium"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#Team"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#NationalTeam -->
+
+    <owl:Class rdf:about="http://ontosem.net/ontology/soccer.owl#NationalTeam">
+        <rdfs:subClassOf rdf:resource="http://ontosem.net/ontology/soccer.owl#Team"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#Pass -->
+
+    <owl:Class rdf:about="http://ontosem.net/ontology/soccer.owl#Pass">
+        <rdfs:subClassOf rdf:resource="http://ontosem.net/ontology/soccer.owl#Action"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#ShotAtGoal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#PenaltyKick -->
+
+    <owl:Class rdf:about="http://ontosem.net/ontology/soccer.owl#PenaltyKick">
+        <rdfs:subClassOf rdf:resource="http://ontosem.net/ontology/soccer.owl#MatchEvent"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#Substitution"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#ThrowIn"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#Person -->
+
+    <owl:Class rdf:about="http://ontosem.net/ontology/soccer.owl#Person">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#PersonRole"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#Role"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#Stadium"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#Team"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#PersonRole -->
+
+    <owl:Class rdf:about="http://ontosem.net/ontology/soccer.owl#PersonRole">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#Role"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#Stadium"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#Team"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#RedCard -->
+
+    <owl:Class rdf:about="http://ontosem.net/ontology/soccer.owl#RedCard">
+        <rdfs:subClassOf rdf:resource="http://ontosem.net/ontology/soccer.owl#Card"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#YellowCard"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#Role -->
+
+    <owl:Class rdf:about="http://ontosem.net/ontology/soccer.owl#Role">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#Stadium"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#Team"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#ShotAtGoal -->
+
+    <owl:Class rdf:about="http://ontosem.net/ontology/soccer.owl#ShotAtGoal">
+        <rdfs:subClassOf rdf:resource="http://ontosem.net/ontology/soccer.owl#Action"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#Stadium -->
+
+    <owl:Class rdf:about="http://ontosem.net/ontology/soccer.owl#Stadium">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#Team"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#Substitution -->
+
+    <owl:Class rdf:about="http://ontosem.net/ontology/soccer.owl#Substitution">
+        <rdfs:subClassOf rdf:resource="http://ontosem.net/ontology/soccer.owl#MatchEvent"/>
+        <owl:disjointWith rdf:resource="http://ontosem.net/ontology/soccer.owl#ThrowIn"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#Team -->
+
+    <owl:Class rdf:about="http://ontosem.net/ontology/soccer.owl#Team">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#ThrowIn -->
+
+    <owl:Class rdf:about="http://ontosem.net/ontology/soccer.owl#ThrowIn">
+        <rdfs:subClassOf rdf:resource="http://ontosem.net/ontology/soccer.owl#MatchEvent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#YellowCard -->
+
+    <owl:Class rdf:about="http://ontosem.net/ontology/soccer.owl#YellowCard">
+        <rdfs:subClassOf rdf:resource="http://ontosem.net/ontology/soccer.owl#Card"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.isi.edu/~pan/damltime/time-entry.owl#Interval -->
+
+    <owl:Class rdf:about="&time-entry;Interval"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#ACMilan -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#ACMilan">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#Club"/>
+        <homeArena rdf:resource="http://ontosem.net/ontology/soccer.owl#SanSiro"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#AjaxAmsterdam -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#AjaxAmsterdam">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#Club"/>
+        <homeArena rdf:resource="http://ontosem.net/ontology/soccer.owl#AmsterdamArena"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#AllianzArena -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#AllianzArena">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#Stadium"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#AmsterdamArena -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#AmsterdamArena">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#Stadium"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#Argentina -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#Argentina">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#NationalTeam"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#Australia -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#Australia">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#NationalTeam"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#Azteca -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#Azteca">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#Stadium"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#BorussiaDortmund -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#BorussiaDortmund">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#Club"/>
+        <homeArena rdf:resource="http://ontosem.net/ontology/soccer.owl#Westfalenstadium"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#Brazil -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#Brazil">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#NationalTeam"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#CampNou -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#CampNou">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#Stadium"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#Coach -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#Coach">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#CristianoRonaldo -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#CristianoRonaldo">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#Person"/>
+        <firstName>Cristiano</firstName>
+        <lastName>Ronaldo</lastName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#CzechRepublic -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#CzechRepublic">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#NationalTeam"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#Defender -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#Defender">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#DidierDrogba -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#DidierDrogba">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#Person"/>
+        <firstName>Didier</firstName>
+        <lastName>Drogba</lastName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#DiegoMaradona -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#DiegoMaradona">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#Person"/>
+        <lastName>Maradona</lastName>
+        <firstName>Diego</firstName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#EricCantona -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#EricCantona">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#Person"/>
+        <lastName>Cantona</lastName>
+        <firstName>Eric</firstName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#FCBarcelona -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#FCBarcelona">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#Club"/>
+        <homeArena rdf:resource="http://ontosem.net/ontology/soccer.owl#CampNou"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#FCBayernMuenchen -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#FCBayernMuenchen">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#Club"/>
+        <homeArena rdf:resource="http://ontosem.net/ontology/soccer.owl#AllianzArena"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#FerencPuskas -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#FerencPuskas">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#Person"/>
+        <lastName>Puskás</lastName>
+        <firstName>Ferenc</firstName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#France -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#France">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#NationalTeam"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#FranckRibery -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#FranckRibery">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#Person"/>
+        <firstName>Franck</firstName>
+        <lastName>Ribéry</lastName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#FrattonPark -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#FrattonPark">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#Stadium"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#GeorgeBest -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#GeorgeBest">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#Person"/>
+        <lastName>Best</lastName>
+        <firstName>George</firstName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#GerdMueller -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#GerdMueller">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#Person"/>
+        <lastName>Müller</lastName>
+        <firstName>Gerd</firstName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#Germany -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#Germany">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#NationalTeam"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#GianluigiBuffon -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#GianluigiBuffon">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#Person"/>
+        <lastName>Buffon</lastName>
+        <firstName>Gianluigi</firstName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#Goalkeeper -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#Goalkeeper">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#HelmutRahn -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#HelmutRahn">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#Person"/>
+        <lastName>Rahn</lastName>
+        <firstName>Helmut</firstName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#Hungary -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#Hungary">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#NationalTeam"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#InterMilan -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#InterMilan">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#Club"/>
+        <homeArena rdf:resource="http://ontosem.net/ontology/soccer.owl#SanSiro"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#Ireland -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#Ireland">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#NationalTeam"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#Italy -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#Italy">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#NationalTeam"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#IvoryCoast -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#IvoryCoast">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#NationalTeam"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#JanKoller -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#JanKoller">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#Person"/>
+        <lastName>Koller</lastName>
+        <firstName>Jan</firstName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#JohanCruyff -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#JohanCruyff">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#Person"/>
+        <firstName>Johan</firstName>
+        <lastName>Cruyff</lastName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#JuventusFC -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#JuventusFC">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#Club"/>
+        <homeArena rdf:resource="http://ontosem.net/ontology/soccer.owl#JuventusStadium"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#JuventusStadium -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#JuventusStadium">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#Stadium"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#LionelMessi -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#LionelMessi">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#Person"/>
+        <firstName>Lionel</firstName>
+        <lastName>Messi</lastName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#ManchesterUnited -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#ManchesterUnited">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#Club"/>
+        <homeArena rdf:resource="http://ontosem.net/ontology/soccer.owl#OldTrafford"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#Middlefielder -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#Middlefielder">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#Netherlands -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#Netherlands">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#NationalTeam"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#OldTrafford -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#OldTrafford">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#Stadium"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#Pele -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#Pele">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#Person"/>
+        <lastName>do Nascimento</lastName>
+        <firstName>Edson Arantes</firstName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#PortsmouthFC -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#PortsmouthFC">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#Club"/>
+        <homeArena rdf:resource="http://ontosem.net/ontology/soccer.owl#FrattonPark"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#Portugal -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#Portugal">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#NationalTeam"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#RealMadrid -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#RealMadrid">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#Club"/>
+        <homeArena rdf:resource="http://ontosem.net/ontology/soccer.owl#SantiagoBernabeu"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#Ronaldo -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#Ronaldo">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#Person"/>
+        <firstName>Ronaldo Luís Nazário</firstName>
+        <lastName>de Lima</lastName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#SanSiro -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#SanSiro">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#Stadium"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#SantiagoBernabeu -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#SantiagoBernabeu">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#Stadium"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#Spain -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#Spain">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#NationalTeam"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#Striker -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#Striker">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#Supporter -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#Supporter">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#Sweden -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#Sweden">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#NationalTeam"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#ThomasMueller -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#ThomasMueller">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#Person"/>
+        <lastName>Müller</lastName>
+        <firstName>Thomas</firstName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#Uruguay -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#Uruguay">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#NationalTeam"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#Wembley -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#Wembley">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#Stadium"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#Westfalenstadium -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#Westfalenstadium">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#Stadium"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontosem.net/ontology/soccer.owl#ZlatanIbrahimovic -->
+
+    <owl:NamedIndividual rdf:about="http://ontosem.net/ontology/soccer.owl#ZlatanIbrahimovic">
+        <rdf:type rdf:resource="http://ontosem.net/ontology/soccer.owl#Person"/>
+        <firstName>Zlatan</firstName>
+        <firstName>Ibrahimović</firstName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#ACMilan"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#AjaxAmsterdam"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#AllianzArena"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#AmsterdamArena"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#Argentina"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#Australia"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#Azteca"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#BorussiaDortmund"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#Brazil"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#CampNou"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#Coach"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#CristianoRonaldo"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#CzechRepublic"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#Defender"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#DidierDrogba"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#DiegoMaradona"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#EricCantona"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#FCBarcelona"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#FCBayernMuenchen"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#FerencPuskas"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#France"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#FranckRibery"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#FrattonPark"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#GeorgeBest"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#GerdMueller"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#Germany"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#GianluigiBuffon"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#Goalkeeper"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#HelmutRahn"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#Hungary"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#InterMilan"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#Ireland"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#Italy"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#IvoryCoast"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#JanKoller"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#JohanCruyff"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#JuventusFC"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#JuventusStadium"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#LionelMessi"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#ManchesterUnited"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#Middlefielder"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#Netherlands"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#OldTrafford"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#Pele"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#PortsmouthFC"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#Portugal"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#RealMadrid"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#Ronaldo"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#SanSiro"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#SantiagoBernabeu"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#Spain"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#Striker"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#Supporter"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#Sweden"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#ThomasMueller"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#Uruguay"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#Wembley"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#Westfalenstadium"/>
+            <rdf:Description rdf:about="http://ontosem.net/ontology/soccer.owl#ZlatanIbrahimovic"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net -->
+
